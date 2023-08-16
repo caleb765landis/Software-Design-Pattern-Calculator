@@ -1,0 +1,27 @@
+//==============================================================================
+//
+//@file       calculator.mpc
+//
+//MPC file to quickly create makefile for project.
+//
+//==============================================================================
+
+project (calculator) {
+  exename = calculator
+  install = .
+ 
+  specific (make, gnuace) {
+    compile_flags += -std=c++11
+  }
+
+  Source_Files {
+    main.cpp
+    Calculator.cpp
+    Calculator_Strategy.cpp
+  }
+
+  Header_Files {
+    Calculator.h
+    Calculator_Strategy.h
+  }
+}

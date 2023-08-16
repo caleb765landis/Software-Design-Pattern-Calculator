@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 
-// #include "Calculator.h"
+#include "Calculator.h"
 
 std::string chooseStrategy();
 
@@ -17,8 +17,10 @@ int main(int argc, char *argv[])
 {
     std::string strategy = "";
 
-    try {
-        if (argc == 1 || argc > 2) {
+    try
+    {
+        if (argc == 1 || argc > 2)
+        {
             throw "ERROR: incorrect number of arguments";
         }
 
@@ -37,7 +39,8 @@ int main(int argc, char *argv[])
             throw "ERROR: unknown strategy";
         }
     }
-    catch (const char *exp) {
+    catch (const char *exp)
+    {
         std::cout << exp << std::endl << std::endl;
         strategy = chooseStrategy();
     }
@@ -46,19 +49,21 @@ int main(int argc, char *argv[])
     std::cout << "Starting calculator with " << strategy << " strategy." << std::endl;
     std::cout << "================================================================" << std::endl << std::endl;
 
-    // Calculator calc;
+    Calculator calc;
 
-    // calc.start();
+    calc.start();
 
     // return from main wihout error
     return 0;
 }
 
-std::string chooseStrategy() {
+std::string chooseStrategy()
+{
     bool keepGoing = true;
     std::string strategy = "";
 
-    while (keepGoing) {
+    while (keepGoing)
+    {
         std::cout << "Choose a strategy." << std::endl;
         std::cout << "Abstract Factory Strategy: -f" << std::endl;
         std::cout << "Builder Strategy: -b" << std::endl << std::endl;
