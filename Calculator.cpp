@@ -19,6 +19,11 @@ Calculator::Calculator(std::string strategy)
     }
 }
 
+Calculator::~Calculator()
+{
+    delete this->strategy_;
+}
+
 void Calculator::start()
 {
     bool keepGoing = true;
@@ -36,8 +41,8 @@ void Calculator::start()
         }
         else
         {
-            this->strategy_.solve(expression);
-            int result = this->strategy_.result();
+            this->strategy_->solve(expression);
+            int result = this->strategy_->result();
             std::cout << "Your result is: " << result << std::endl;
         } // end if
     } // end while
@@ -47,11 +52,11 @@ void Calculator::setStrategy(std::string strategy)
 {
     if (strategy == "factory")
     {
-        this->strategy_ = Calculator_Strategy();
+        this->strategy_ = new Abstract_Factory_Strategy();
     }
     else if (strategy == "builder")
     {
-        this->strategy_ = Calculator_Strategy();
+        this->strategy_ = new Builder_Strategy();
     }
     else
     {

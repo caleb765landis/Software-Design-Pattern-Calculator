@@ -14,18 +14,6 @@
 
 all: calculator
 
-run: calculator
-	./calculator
-
-factory: calculator
-	./calculator -f
-
-builder: calculator
-	./calculator -b
-
-driver: calculator
-	./calculator -d
-
 depend: calculator-depend
 
 clean generated realclean check-syntax $(CUSTOM_TARGETS):

@@ -14,21 +14,14 @@
 #include <string>
 #include <sstream>
 
-// #include "Stack.h"
-// #include "Array.h"
-// #include "Stack_Expr_Command_Factory.h"
-// #include "Expr_Command.h"
-
 class Calculator_Strategy
 {
 public:
-    Calculator_Strategy();
+    virtual void solve(std::string expression) = 0;
 
-    void solve(std::string expression);
+    virtual int result() = 0;
 
-    int result();
-
-    private:
+    protected:
         int result_;
 };
 

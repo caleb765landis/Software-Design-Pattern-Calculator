@@ -31,8 +31,8 @@ LIBPREFIX     = lib
 LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
-OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT)
-SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp
+OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) Abstract_Factory_Strategy$(OBJEXT) Builder_Strategy$(OBJEXT)
+SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp Abstract_Factory_Strategy.cpp Builder_Strategy.cpp
 LINK.cc       = $(LD) $(LDFLAGS)
 EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
@@ -58,6 +58,12 @@ Calculator$(OBJEXT): Calculator.cpp
 
 Calculator_Strategy$(OBJEXT): Calculator_Strategy.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Calculator_Strategy.cpp
+
+Abstract_Factory_Strategy$(OBJEXT): Abstract_Factory_Strategy.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Abstract_Factory_Strategy.cpp
+
+Builder_Strategy$(OBJEXT): Builder_Strategy.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Builder_Strategy.cpp
 
 clean:
 	-$(RM) $(OBJS)

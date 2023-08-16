@@ -14,52 +14,56 @@
 #include <string>
 #include <sstream>
 
-#include "Calculator_Strategy.h"
-// #include "Stack.h"
-// #include "Array.h"
-// #include "Stack_Expr_Command_Factory.h"
-// #include "Expr_Command.h"
+class Calculator_Strategy;
+#include "Abstract_Factory_Strategy.h"
+#include "Builder_Strategy.h"
 
 class Calculator
 {
 public:
     /**
-     * @brief Construct a new Calculator object
-     *        defaults to factory strategy
+     * @brief Construct a new Calculator object.
+     *        Defaults to factory strategy.
      */
     Calculator();
 
     /**
-     * @brief Construct a new Calculator object
+     * @brief Construct a new Calculator object.
      *
-     * @param strategy must be either "factory" or "builder"
+     * @param strategy Must be either "factory" or "builder".
      *
-     * @exception defaults to factory strategy if exception is caught
+     * @exception Defaults to factory strategy if exception is caught.
      */
     Calculator(std::string strategy);
 
     /**
-     * @brief Starts Calculator main loop
-     *        Gets expression input from user and passes it to chosen strategy for evaluation
-     *        Outputs result from strategy
+     * @brief Destroy the Calculator object.
      * 
-     *        Enter "QUIT" to exit main loop
+     */
+    ~Calculator();
+
+    /**
+     * @brief Starts Calculator main loop.
+     *        Gets expression input from user and passes it to chosen strategy for evaluation.
+     *        Outputs result from strategy.
+     * 
+     *        Enter "QUIT" to exit main loop.
      * 
      */
     void start();
 
     /**
-     * @brief sets strategy_ of type Calculator_Strategy
+     * @brief Sets strategy_ of type Calculator_Strategy.
      *
-     * @param strategy must be either "factory" or "builder"
+     * @param strategy Must be either "factory" or "builder".
      *
-     * @exception throws error string if strategy is invalid
-     *            catch with const char *exp
+     * @exception Throws error string if strategy is invalid.
+     *            Catch with const char *exp.
      */
     void setStrategy(std::string strategy);
 
 private:
-    Calculator_Strategy strategy_;
+    Calculator_Strategy* strategy_;
 };
 
 #endif

@@ -34,6 +34,12 @@ int main(int argc, char *argv[])
         {
             strategy = "builder";
         }
+        else if (temp == "-d")
+        {
+            // Create driver instance
+            // Test all classes
+            strategy = chooseStrategy();
+        }
         else
         {
             throw "ERROR: unknown strategy";
@@ -49,7 +55,7 @@ int main(int argc, char *argv[])
     std::cout << "Starting calculator with " << strategy << " strategy." << std::endl;
     std::cout << "================================================================" << std::endl << std::endl;
 
-    Calculator calc;
+    Calculator calc(strategy);
 
     calc.start();
 
