@@ -21,13 +21,13 @@ project (calculator) {
     ./factory_strategy/Abstract_Factory_Strategy.cpp
     ./factory_strategy/Expr_Command_Factory.cpp
     ./factory_strategy/Stack_Expr_Command_Factory.cpp
-    ./factory_strategy/Expr_Command.cpp
-    ./factory_strategy/Num_Command.cpp
-    ./factory_strategy/Add_Command.cpp
-    ./factory_strategy/Sub_Command.cpp
-    ./factory_strategy/Mult_Command.cpp
-    ./factory_strategy/Div_Command.cpp
-    ./factory_strategy/Mod_Command.cpp
+    ./factory_strategy/expression_commands/Expr_Command.cpp
+    ./factory_strategy/expression_commands/Num_Command.cpp
+    ./factory_strategy/expression_commands/Add_Command.cpp
+    ./factory_strategy/expression_commands/Sub_Command.cpp
+    ./factory_strategy/expression_commands/Mult_Command.cpp
+    ./factory_strategy/expression_commands/Div_Command.cpp
+    ./factory_strategy/expression_commands/Mod_Command.cpp
     ./builder_strategy/Builder_Strategy.cpp
     ./drivers/Driver.cpp
     ./drivers/Utils_Driver.cpp
@@ -39,13 +39,13 @@ project (calculator) {
     ./factory_strategy/Abstract_Factory_Strategy.h
     ./factory_strategy/Expr_Command_Factory.h
     ./factory_strategy/Stack_Expr_Command_Factory.h
-    ./factory_strategy/Expr_Command.h
-    ./factory_strategy/Num_Command.h
-    ./factory_strategy/Add_Command.h
-    ./factory_strategy/Sub_Command.h
-    ./factory_strategy/Mult_Command.h
-    ./factory_strategy/Div_Command.h
-    ./factory_strategy/Mod_Command.h
+    ./factory_strategy/expression_commands/Expr_Command.h
+    ./factory_strategy/expression_commands/Num_Command.h
+    ./factory_strategy/expression_commands/Add_Command.h
+    ./factory_strategy/expression_commands/Sub_Command.h
+    ./factory_strategy/expression_commands/Mult_Command.h
+    ./factory_strategy/expression_commands/Div_Command.h
+    ./factory_strategy/expression_commands/Mod_Command.h
     ./builder_strategy/Builder_Strategy.h
     ./drivers/Driver.h
     ./drivers/Utils_Driver.h

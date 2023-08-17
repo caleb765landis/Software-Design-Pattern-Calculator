@@ -10,7 +10,7 @@
 #define _EXPR_COMMAND_
 
 #include <string>
-#include "../utils/Stack.h"
+#include "../../utils/Stack.h"
 
 class Expr_Command
 {

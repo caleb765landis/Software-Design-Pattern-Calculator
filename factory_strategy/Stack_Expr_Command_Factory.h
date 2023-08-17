@@ -11,12 +11,12 @@
 
 #include "Expr_Command_Factory.h"
 #include "../utils/Stack.h"
-#include "Num_Command.h"
-#include "Add_Command.h"
-#include "Sub_Command.h"
-#include "Mult_Command.h"
-#include "Div_Command.h"
-#include "Mod_Command.h"
+#include "./expression_commands/Num_Command.h"
+#include "./expression_commands/Add_Command.h"
+#include "./expression_commands/Sub_Command.h"
+#include "./expression_commands/Mult_Command.h"
+#include "./expression_commands/Div_Command.h"
+#include "./expression_commands/Mod_Command.h"
 
 class Stack_Expr_Command_Factory : virtual public Expr_Command_Factory
 {
