@@ -31,8 +31,8 @@ LIBPREFIX     = lib
 LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
-OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) Abstract_Factory_Strategy$(OBJEXT) Builder_Strategy$(OBJEXT) ./drivers/Driver$(OBJEXT) ./drivers/Utils_Driver$(OBJEXT)
-SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp Abstract_Factory_Strategy.cpp Builder_Strategy.cpp ./drivers/Driver.cpp ./drivers/Utils_Driver.cpp
+OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) ./factory_strategy/Abstract_Factory_Strategy$(OBJEXT) ./builder_strategy/Builder_Strategy$(OBJEXT) ./drivers/Driver$(OBJEXT) ./drivers/Utils_Driver$(OBJEXT)
+SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp ./factory_strategy/Abstract_Factory_Strategy.cpp ./builder_strategy/Builder_Strategy.cpp ./drivers/Driver.cpp ./drivers/Utils_Driver.cpp
 LINK.cc       = $(LD) $(LDFLAGS)
 EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
@@ -59,11 +59,11 @@ Calculator$(OBJEXT): Calculator.cpp
 Calculator_Strategy$(OBJEXT): Calculator_Strategy.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Calculator_Strategy.cpp
 
-Abstract_Factory_Strategy$(OBJEXT): Abstract_Factory_Strategy.cpp
-	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Abstract_Factory_Strategy.cpp
+./factory_strategy/Abstract_Factory_Strategy$(OBJEXT): ./factory_strategy/Abstract_Factory_Strategy.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Abstract_Factory_Strategy.cpp
 
-Builder_Strategy$(OBJEXT): Builder_Strategy.cpp
-	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) Builder_Strategy.cpp
+./builder_strategy/Builder_Strategy$(OBJEXT): ./builder_strategy/Builder_Strategy.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Builder_Strategy.cpp
 
 ./drivers/Driver$(OBJEXT): ./drivers/Driver.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./drivers/Driver.cpp

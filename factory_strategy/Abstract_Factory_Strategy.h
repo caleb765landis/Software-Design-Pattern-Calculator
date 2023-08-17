@@ -1,37 +1,37 @@
 //==============================================================================
 /**
- * @file       Builder_Strategy.h
+ * @file       Abstract_Factory_Strategy.h
  *
  * Concrete implementation of calculator strategy that makes use of the
- * builder software design pattern.
+ * abstract factory software design pattern.
  */
 //==============================================================================
 
-#ifndef _BUILDER_STRATEGY_H_
-#define _BUILDER_STRATEGY_H_
+#ifndef _ABSTRACT_FACTORY_STRATEGY_H_
+#define _ABSTRACT_FACTORY_STRATEGY_H_
 
 #include <iostream>
 #include <string>
 #include <sstream>
 
-#include "Calculator_Strategy.h"
+#include "../Calculator_Strategy.h"
 // #include "Stack.h"
 // #include "Array.h"
 // #include "Stack_Expr_Command_Factory.h"
 // #include "Expr_Command.h"
 
-class Builder_Strategy : public Calculator_Strategy
+class Abstract_Factory_Strategy: public Calculator_Strategy
 {
 public:
     /**
-     * @brief Construct a new Builder_Strategy object
+     * @brief Construct a new Abstract_Factory_Strategy object
      *        Initializes result_ to 0
-     *
+     * 
      */
-    Builder_Strategy();
+    Abstract_Factory_Strategy();
 
     /**
-     * @brief solves simple math expression using builder pattern and stores in result_
+     * @brief solves simple math expression using abstract factory pattern and stores in result_
      *
      * @param expression
      */
@@ -44,7 +44,7 @@ public:
      */
     int result();
 
-protected:
+protected: 
     int result_;
 };
 

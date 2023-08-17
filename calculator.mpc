@@ -18,8 +18,8 @@ project (calculator) {
     main.cpp
     Calculator.cpp
     Calculator_Strategy.cpp
-    Abstract_Factory_Strategy.cpp
-    Builder_Strategy.cpp
+    ./factory_strategy/Abstract_Factory_Strategy.cpp
+    ./builder_strategy/Builder_Strategy.cpp
     ./drivers/Driver.cpp
     ./drivers/Utils_Driver.cpp
   }
@@ -27,8 +27,8 @@ project (calculator) {
   Header_Files {
     Calculator.h
     Calculator_Strategy.h
-    Abstract_Factory_Strategy.h
-    Builder_Strategy.h
+    ./factory_strategy/Abstract_Factory_Strategy.h
+    ./builder_strategy/Builder_Strategy.h
     ./drivers/Driver.h
     ./drivers/Utils_Driver.h
   }

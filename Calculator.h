@@ -15,8 +15,8 @@
 #include <sstream>
 
 class Calculator_Strategy;
-#include "Abstract_Factory_Strategy.h"
-#include "Builder_Strategy.h"
+#include "./factory_strategy/Abstract_Factory_Strategy.h"
+#include "./builder_strategy/Builder_Strategy.h"
 
 class Calculator
 {
