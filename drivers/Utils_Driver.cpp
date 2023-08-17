@@ -1,10 +1,10 @@
-// Driver.cpp
+// Utils_Driver.cpp
 
-#include "Driver.h"
+#include "Utils_Driver.h"
 
-Driver::Driver() {}
+Utils_Driver::Utils_Driver() {}
 
-void Driver::testAll()
+void Utils_Driver::testAll()
 {
     testBaseArray();
     testDynamicArray();
@@ -13,7 +13,7 @@ void Driver::testAll()
     testQueue();
 }
 
-void Driver::testBaseArray()
+void Utils_Driver::testBaseArray()
 {
     std::cout << "BASE_ARRAY TEST" << std::endl
               << std::endl;
@@ -163,13 +163,13 @@ void Driver::testBaseArray()
               << std::endl;
 }
 
-void Driver::testDynamicArray()
+void Utils_Driver::testDynamicArray()
 {
     std::cout << "DYNAMIC ARRAY TEST" << std::endl
               << std::endl;
 
     Array<int> arrayNull;
-    std::cout << "driver.cpp and Array.cpp working" << std::endl
+    std::cout << "Utils_Driver.cpp and Array.cpp working" << std::endl
               << std::endl;
 
     // test array with length constructor
@@ -250,7 +250,7 @@ void Driver::testDynamicArray()
               << std::endl;
 }
 
-void Driver::testFixedArray()
+void Utils_Driver::testFixedArray()
 {
     std::cout << "FIXED ARRAY TEST" << std::endl
               << std::endl;
@@ -278,7 +278,7 @@ void Driver::testFixedArray()
     std::cout << std::endl;
 }
 
-void Driver::testStack()
+void Utils_Driver::testStack()
 {
     std::cout << "STACK TEST" << std::endl
               << std::endl;
@@ -315,7 +315,7 @@ void Driver::testStack()
               << std::endl;
 }
 
-void Driver::testQueue()
+void Utils_Driver::testQueue()
 {
     std::cout << "QUEUE TEST" << std::endl
               << std::endl;
@@ -350,14 +350,14 @@ void Driver::testQueue()
     queue.enqueue(4);
 
     Queue<int> queueCopy(queue);
-    std::cout << "queueCopy front " << queueCopy.front() << std::endl;
-    std::cout << "queueCopy back " << queueCopy.back() << std::endl
-              << std::endl;
+    // std::cout << "queueCopy front " << queueCopy.front() << std::endl;
+    // std::cout << "queueCopy back " << queueCopy.back() << std::endl
+    //           << std::endl;
 
     Queue<int> queueAssingment = queue;
-    std::cout << "queueAssingment front " << queueCopy.front() << std::endl;
-    std::cout << "queueAssingment back " << queueCopy.back() << std::endl
-              << std::endl;
+    // std::cout << "queueAssingment front " << queueCopy.front() << std::endl;
+    // std::cout << "queueAssingment back " << queueCopy.back() << std::endl
+    //           << std::endl;
 
     queue.clear();
     std::cout << "queue size after clear " << queue.size() << std::endl;
@@ -369,4 +369,6 @@ void Driver::testQueue()
     qPtr->enqueue(8);
     std::cout << "qPtr front " << qPtr->front() << std::endl;
     delete qPtr;
+
+    std::cout << std::endl;
 }

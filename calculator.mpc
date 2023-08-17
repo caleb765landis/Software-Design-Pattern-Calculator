@@ -16,19 +16,21 @@ project (calculator) {
 
   Source_Files {
     main.cpp
-    Driver.cpp
     Calculator.cpp
     Calculator_Strategy.cpp
     Abstract_Factory_Strategy.cpp
     Builder_Strategy.cpp
+    ./drivers/Driver.cpp
+    ./drivers/Utils_Driver.cpp
   }
 
   Header_Files {
-    Driver.h
     Calculator.h
     Calculator_Strategy.h
     Abstract_Factory_Strategy.h
     Builder_Strategy.h
+    ./drivers/Driver.h
+    ./drivers/Utils_Driver.h
   }
 
   Template_Files {

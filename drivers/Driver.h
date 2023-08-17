@@ -14,11 +14,7 @@
 #include <sstream>
 #include <cstring>
 
-#include "./utils/Base_Array.h"
-#include "./utils/Array.h"
-#include "./utils/Fixed_Array.h"
-#include "./utils/Stack.h"
-#include "./utils/Queue.h"
+#include "Utils_Driver.h"
 
 class Driver
 {
@@ -31,6 +27,9 @@ public:
     void testFixedArray();
     void testStack();
     void testQueue();
+
+private:
+    Utils_Driver utils_;
 };
 
 #endif
