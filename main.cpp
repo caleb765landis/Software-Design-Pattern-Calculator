@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 
+#include "Driver.h"
 #include "Calculator.h"
 
 std::string chooseStrategy();
@@ -37,7 +38,12 @@ int main(int argc, char *argv[])
         else if (temp == "-d")
         {
             // Create driver instance
+            Driver driver;
+
             // Test all classes
+            driver.testAll();
+
+            // Choose strategy to continue testing calculator client
             strategy = chooseStrategy();
         }
         else

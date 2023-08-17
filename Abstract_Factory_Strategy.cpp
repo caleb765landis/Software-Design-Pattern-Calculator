@@ -10,7 +10,19 @@ Abstract_Factory_Strategy::Abstract_Factory_Strategy()
 
 void Abstract_Factory_Strategy::solve(std::string expression)
 {
-    std::cout << expression << std::endl;
+    // // create int stack called result
+    // Stack<int> result;
+
+    // // create Stack_Expr_Command_Factory called factory passing result as an argument
+    // Stack_Expr_Command_Factory factory(result);
+
+    // // create an array of <Command *> called postfix
+    // Array<Expr_Command *> postfix;
+
+    // // call infix_to_postfix() passing infix, factory, and postfix as arugments
+    // infix_to_postfix(infix, factory, postfix);
+    // // evaluate postfix expression
+    // evaluate_postfix(postfix);
 }
 
 int Abstract_Factory_Strategy::result()

@@ -17,8 +17,18 @@
 class Calculator_Strategy
 {
 public:
+    /**
+     * @brief solves simple math expression and stores in result_
+     * 
+     * @param expression 
+     */
     virtual void solve(std::string expression) = 0;
 
+    /**
+     * @brief returns result_
+     * 
+     * @return int 
+     */
     virtual int result() = 0;
 
     protected:

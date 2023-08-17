@@ -16,6 +16,7 @@ project (calculator) {
 
   Source_Files {
     main.cpp
+    Driver.cpp
     Calculator.cpp
     Calculator_Strategy.cpp
     Abstract_Factory_Strategy.cpp
@@ -23,9 +24,26 @@ project (calculator) {
   }
 
   Header_Files {
+    Driver.h
     Calculator.h
     Calculator_Strategy.h
     Abstract_Factory_Strategy.h
     Builder_Strategy.h
+  }
+
+  Template_Files {
+    ./utils/Base_Array.h
+    ./utils/Base_Array.inl
+    ./utils/Base_Array.cpp
+    ./utils/Array.h
+    ./utils/Array.cpp
+    ./utils/Fixed_Array.h
+    ./utils/Fixed_Array.cpp
+    ./utils/Stack.h
+    ./utils/Stack.inl
+    ./utils/Stack.cpp
+    ./utils/Queue.h
+    ./utils/Queue.inl
+    ./utils/Queue.cpp
   }
 }

@@ -23,10 +23,25 @@
 class Builder_Strategy : public Calculator_Strategy
 {
 public:
+    /**
+     * @brief Construct a new Builder_Strategy object
+     *        Initializes result_ to 0
+     *
+     */
     Builder_Strategy();
 
+    /**
+     * @brief solves simple math expression using builder pattern and stores in result_
+     *
+     * @param expression
+     */
     void solve(std::string expression);
 
+    /**
+     * @brief returns result_
+     * 
+     * @return int 
+     */
     int result();
 
 protected:
