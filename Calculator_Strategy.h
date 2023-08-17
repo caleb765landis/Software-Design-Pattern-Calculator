@@ -31,8 +31,6 @@ public:
      */
     virtual int result() = 0;
 
-    protected:
-        int result_;
 };
 
 #endif

@@ -15,10 +15,10 @@
 #include <sstream>
 
 #include "../Calculator_Strategy.h"
-// #include "Stack.h"
-// #include "Array.h"
-// #include "Stack_Expr_Command_Factory.h"
-// #include "Expr_Command.h"
+#include "../utils/Stack.h"
+#include "../utils/Array.h"
+#include "Stack_Expr_Command_Factory.h"
+#include "Expr_Command.h"
 
 class Abstract_Factory_Strategy: public Calculator_Strategy
 {
@@ -44,7 +44,15 @@ public:
      */
     int result();
 
-protected: 
+    void infix_to_postfix(const std::string &infix, Expr_Command_Factory &factory, Array<Expr_Command *> &postfix);
+
+    void evaluate_postfix(Array<Expr_Command *> &postfix);
+
+    bool isOperand(const std::string &s);
+
+    bool isOperator(const std::string &s);
+
+protected:
     int result_;
 };
 

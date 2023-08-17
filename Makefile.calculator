@@ -31,8 +31,8 @@ LIBPREFIX     = lib
 LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
-OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) ./factory_strategy/Abstract_Factory_Strategy$(OBJEXT) ./builder_strategy/Builder_Strategy$(OBJEXT) ./drivers/Driver$(OBJEXT) ./drivers/Utils_Driver$(OBJEXT)
-SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp ./factory_strategy/Abstract_Factory_Strategy.cpp ./builder_strategy/Builder_Strategy.cpp ./drivers/Driver.cpp ./drivers/Utils_Driver.cpp
+OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) ./factory_strategy/Abstract_Factory_Strategy$(OBJEXT) ./factory_strategy/Expr_Command_Factory$(OBJEXT) ./factory_strategy/Stack_Expr_Command_Factory$(OBJEXT) ./factory_strategy/Expr_Command$(OBJEXT) ./factory_strategy/Num_Command$(OBJEXT) ./factory_strategy/Add_Command$(OBJEXT) ./factory_strategy/Sub_Command$(OBJEXT) ./factory_strategy/Mult_Command$(OBJEXT) ./factory_strategy/Div_Command$(OBJEXT) ./factory_strategy/Mod_Command$(OBJEXT) ./builder_strategy/Builder_Strategy$(OBJEXT) ./drivers/Driver$(OBJEXT) ./drivers/Utils_Driver$(OBJEXT)
+SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp ./factory_strategy/Abstract_Factory_Strategy.cpp ./factory_strategy/Expr_Command_Factory.cpp ./factory_strategy/Stack_Expr_Command_Factory.cpp ./factory_strategy/Expr_Command.cpp ./factory_strategy/Num_Command.cpp ./factory_strategy/Add_Command.cpp ./factory_strategy/Sub_Command.cpp ./factory_strategy/Mult_Command.cpp ./factory_strategy/Div_Command.cpp ./factory_strategy/Mod_Command.cpp ./builder_strategy/Builder_Strategy.cpp ./drivers/Driver.cpp ./drivers/Utils_Driver.cpp
 LINK.cc       = $(LD) $(LDFLAGS)
 EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
@@ -61,6 +61,33 @@ Calculator_Strategy$(OBJEXT): Calculator_Strategy.cpp
 
 ./factory_strategy/Abstract_Factory_Strategy$(OBJEXT): ./factory_strategy/Abstract_Factory_Strategy.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Abstract_Factory_Strategy.cpp
+
+./factory_strategy/Expr_Command_Factory$(OBJEXT): ./factory_strategy/Expr_Command_Factory.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Expr_Command_Factory.cpp
+
+./factory_strategy/Stack_Expr_Command_Factory$(OBJEXT): ./factory_strategy/Stack_Expr_Command_Factory.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Stack_Expr_Command_Factory.cpp
+
+./factory_strategy/Expr_Command$(OBJEXT): ./factory_strategy/Expr_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Expr_Command.cpp
+
+./factory_strategy/Num_Command$(OBJEXT): ./factory_strategy/Num_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Num_Command.cpp
+
+./factory_strategy/Add_Command$(OBJEXT): ./factory_strategy/Add_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Add_Command.cpp
+
+./factory_strategy/Sub_Command$(OBJEXT): ./factory_strategy/Sub_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Sub_Command.cpp
+
+./factory_strategy/Mult_Command$(OBJEXT): ./factory_strategy/Mult_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Mult_Command.cpp
+
+./factory_strategy/Div_Command$(OBJEXT): ./factory_strategy/Div_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Div_Command.cpp
+
+./factory_strategy/Mod_Command$(OBJEXT): ./factory_strategy/Mod_Command.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./factory_strategy/Mod_Command.cpp
 
 ./builder_strategy/Builder_Strategy$(OBJEXT): ./builder_strategy/Builder_Strategy.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Builder_Strategy.cpp
