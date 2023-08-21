@@ -31,8 +31,8 @@ LIBPREFIX     = lib
 LIBSUFFIX     = 
 GENFLAGS      = -O
 LDLIBS        = -ldl $(subst lib,-l,$(sort $(basename $(notdir $(wildcard /usr/lib/librt.so /lib/librt.so))))) -lpthread
-OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) ./factory_strategy/Abstract_Factory_Strategy$(OBJEXT) ./factory_strategy/Expr_Command_Factory$(OBJEXT) ./factory_strategy/Stack_Expr_Command_Factory$(OBJEXT) ./factory_strategy/expression_commands/Expr_Command$(OBJEXT) ./factory_strategy/expression_commands/Num_Command$(OBJEXT) ./factory_strategy/expression_commands/Add_Command$(OBJEXT) ./factory_strategy/expression_commands/Sub_Command$(OBJEXT) ./factory_strategy/expression_commands/Mult_Command$(OBJEXT) ./factory_strategy/expression_commands/Div_Command$(OBJEXT) ./factory_strategy/expression_commands/Mod_Command$(OBJEXT) ./builder_strategy/Builder_Strategy$(OBJEXT) ./builder_strategy/Expr_Builder$(OBJEXT) ./builder_strategy/Expr_Tree$(OBJEXT) ./builder_strategy/expression_nodes/Expr_Node$(OBJEXT) ./builder_strategy/expression_nodes/Binary_Expr_Node$(OBJEXT) ./drivers/Driver$(OBJEXT) ./drivers/Utils_Driver$(OBJEXT)
-SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp ./factory_strategy/Abstract_Factory_Strategy.cpp ./factory_strategy/Expr_Command_Factory.cpp ./factory_strategy/Stack_Expr_Command_Factory.cpp ./factory_strategy/expression_commands/Expr_Command.cpp ./factory_strategy/expression_commands/Num_Command.cpp ./factory_strategy/expression_commands/Add_Command.cpp ./factory_strategy/expression_commands/Sub_Command.cpp ./factory_strategy/expression_commands/Mult_Command.cpp ./factory_strategy/expression_commands/Div_Command.cpp ./factory_strategy/expression_commands/Mod_Command.cpp ./builder_strategy/Builder_Strategy.cpp ./builder_strategy/Expr_Builder.cpp ./builder_strategy/Expr_Tree.cpp ./builder_strategy/expression_nodes/Expr_Node.cpp ./builder_strategy/expression_nodes/Binary_Expr_Node.cpp ./drivers/Driver.cpp ./drivers/Utils_Driver.cpp
+OBJS          = main$(OBJEXT) Calculator$(OBJEXT) Calculator_Strategy$(OBJEXT) ./factory_strategy/Abstract_Factory_Strategy$(OBJEXT) ./factory_strategy/Expr_Command_Factory$(OBJEXT) ./factory_strategy/Stack_Expr_Command_Factory$(OBJEXT) ./factory_strategy/expression_commands/Expr_Command$(OBJEXT) ./factory_strategy/expression_commands/Num_Command$(OBJEXT) ./factory_strategy/expression_commands/Add_Command$(OBJEXT) ./factory_strategy/expression_commands/Sub_Command$(OBJEXT) ./factory_strategy/expression_commands/Mult_Command$(OBJEXT) ./factory_strategy/expression_commands/Div_Command$(OBJEXT) ./factory_strategy/expression_commands/Mod_Command$(OBJEXT) ./builder_strategy/Builder_Strategy$(OBJEXT) ./builder_strategy/Expr_Builder$(OBJEXT) ./builder_strategy/Expr_Tree_Builder$(OBJEXT) ./builder_strategy/Expr_Node_Visitor$(OBJEXT) ./builder_strategy/Eval_Expr_Tree$(OBJEXT) ./builder_strategy/Expr_Tree$(OBJEXT) ./builder_strategy/expression_nodes/Expr_Node$(OBJEXT) ./builder_strategy/expression_nodes/Binary_Expr_Node$(OBJEXT) ./builder_strategy/expression_nodes/Addition_Node$(OBJEXT) ./builder_strategy/expression_nodes/Subtraction_Node$(OBJEXT) ./builder_strategy/expression_nodes/Multiplication_Node$(OBJEXT) ./builder_strategy/expression_nodes/Division_Node$(OBJEXT) ./builder_strategy/expression_nodes/Mod_Node$(OBJEXT) ./builder_strategy/expression_nodes/Number_Node$(OBJEXT) ./drivers/Driver$(OBJEXT) ./drivers/Utils_Driver$(OBJEXT)
+SRC           = main.cpp Calculator.cpp Calculator_Strategy.cpp ./factory_strategy/Abstract_Factory_Strategy.cpp ./factory_strategy/Expr_Command_Factory.cpp ./factory_strategy/Stack_Expr_Command_Factory.cpp ./factory_strategy/expression_commands/Expr_Command.cpp ./factory_strategy/expression_commands/Num_Command.cpp ./factory_strategy/expression_commands/Add_Command.cpp ./factory_strategy/expression_commands/Sub_Command.cpp ./factory_strategy/expression_commands/Mult_Command.cpp ./factory_strategy/expression_commands/Div_Command.cpp ./factory_strategy/expression_commands/Mod_Command.cpp ./builder_strategy/Builder_Strategy.cpp ./builder_strategy/Expr_Builder.cpp ./builder_strategy/Expr_Tree_Builder.cpp ./builder_strategy/Expr_Node_Visitor.cpp ./builder_strategy/Eval_Expr_Tree.cpp ./builder_strategy/Expr_Tree.cpp ./builder_strategy/expression_nodes/Expr_Node.cpp ./builder_strategy/expression_nodes/Binary_Expr_Node.cpp ./builder_strategy/expression_nodes/Addition_Node.cpp ./builder_strategy/expression_nodes/Subtraction_Node.cpp ./builder_strategy/expression_nodes/Multiplication_Node.cpp ./builder_strategy/expression_nodes/Division_Node.cpp ./builder_strategy/expression_nodes/Mod_Node.cpp ./builder_strategy/expression_nodes/Number_Node.cpp ./drivers/Driver.cpp ./drivers/Utils_Driver.cpp
 LINK.cc       = $(LD) $(LDFLAGS)
 EXPORTFLAGS   = 
 DEPLIBS       = $(foreach lib, , $(foreach libpath, ., $(wildcard $(libpath)/lib$(lib).a)))
@@ -95,6 +95,15 @@ Calculator_Strategy$(OBJEXT): Calculator_Strategy.cpp
 ./builder_strategy/Expr_Builder$(OBJEXT): ./builder_strategy/Expr_Builder.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Expr_Builder.cpp
 
+./builder_strategy/Expr_Tree_Builder$(OBJEXT): ./builder_strategy/Expr_Tree_Builder.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Expr_Tree_Builder.cpp
+
+./builder_strategy/Expr_Node_Visitor$(OBJEXT): ./builder_strategy/Expr_Node_Visitor.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Expr_Node_Visitor.cpp
+
+./builder_strategy/Eval_Expr_Tree$(OBJEXT): ./builder_strategy/Eval_Expr_Tree.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Eval_Expr_Tree.cpp
+
 ./builder_strategy/Expr_Tree$(OBJEXT): ./builder_strategy/Expr_Tree.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/Expr_Tree.cpp
 
@@ -103,6 +112,24 @@ Calculator_Strategy$(OBJEXT): Calculator_Strategy.cpp
 
 ./builder_strategy/expression_nodes/Binary_Expr_Node$(OBJEXT): ./builder_strategy/expression_nodes/Binary_Expr_Node.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Binary_Expr_Node.cpp
+
+./builder_strategy/expression_nodes/Addition_Node$(OBJEXT): ./builder_strategy/expression_nodes/Addition_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Addition_Node.cpp
+
+./builder_strategy/expression_nodes/Subtraction_Node$(OBJEXT): ./builder_strategy/expression_nodes/Subtraction_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Subtraction_Node.cpp
+
+./builder_strategy/expression_nodes/Multiplication_Node$(OBJEXT): ./builder_strategy/expression_nodes/Multiplication_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Multiplication_Node.cpp
+
+./builder_strategy/expression_nodes/Division_Node$(OBJEXT): ./builder_strategy/expression_nodes/Division_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Division_Node.cpp
+
+./builder_strategy/expression_nodes/Mod_Node$(OBJEXT): ./builder_strategy/expression_nodes/Mod_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Mod_Node.cpp
+
+./builder_strategy/expression_nodes/Number_Node$(OBJEXT): ./builder_strategy/expression_nodes/Number_Node.cpp
+	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./builder_strategy/expression_nodes/Number_Node.cpp
 
 ./drivers/Driver$(OBJEXT): ./drivers/Driver.cpp
 	$(COMPILE.cc) $(EXPORTFLAGS) $(OUTPUT_OPTION) ./drivers/Driver.cpp

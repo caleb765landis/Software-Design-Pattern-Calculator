@@ -1,24 +1,24 @@
 //==============================================================================
 /**
- * @file    Multiplication_Node.h
+ * @file    Number_Node.h
  *
  */
 //==============================================================================
 
-#ifndef _MULTIPLICATION_NODE_H_
-#define _MULTIPLICATION_NODE_H_
+#ifndef _Number_Node_H_
+#define _Number_Node_H_
 
-#include "Binary_Expr_Node.h"
+#include "Expr_Node.h"
 #include "../Expr_Node_Visitor.h"
 
-class Multiplication_Node : public Binary_Expr_Node
+class Number_Node : public Expr_Node
 {
 public:
-    Multiplication_Node(void);
-    // Multiplication_Node(Expr_Node *l, Expr_Node *r);
-    ~Multiplication_Node(void);
+    Number_Node(int val);
+    ~Number_Node(void);
 
     virtual void accept(Expr_Node_Visitor &v);
+    virtual bool is_num();
     virtual int get_precedence();
 };
 
