@@ -15,10 +15,7 @@
 #include <sstream>
 
 #include "../Calculator_Strategy.h"
-// #include "Stack.h"
-// #include "Array.h"
-// #include "Stack_Expr_Command_Factory.h"
-// #include "Expr_Command.h"
+// #include "Expr_Tree_Builder.h"
 
 class Builder_Strategy : public Calculator_Strategy
 {

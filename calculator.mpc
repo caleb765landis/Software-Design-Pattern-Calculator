@@ -29,6 +29,10 @@ project (calculator) {
     ./factory_strategy/expression_commands/Div_Command.cpp
     ./factory_strategy/expression_commands/Mod_Command.cpp
     ./builder_strategy/Builder_Strategy.cpp
+    ./builder_strategy/Expr_Builder.cpp
+    ./builder_strategy/Expr_Tree.cpp
+    ./builder_strategy/expression_nodes/Expr_Node.cpp
+    ./builder_strategy/expression_nodes/Binary_Expr_Node.cpp
     ./drivers/Driver.cpp
     ./drivers/Utils_Driver.cpp
   }
@@ -47,6 +51,10 @@ project (calculator) {
     ./factory_strategy/expression_commands/Div_Command.h
     ./factory_strategy/expression_commands/Mod_Command.h
     ./builder_strategy/Builder_Strategy.h
+    ./builder_strategy/Expr_Builder.h
+    ./builder_strategy/Expr_Tree.h
+    ./builder_strategy/expression_nodes/Expr_Node.h
+    ./builder_strategy/expression_nodes/Binary_Expr_Node.h
     ./drivers/Driver.h
     ./drivers/Utils_Driver.h
   }

@@ -55,7 +55,7 @@ void Abstract_Factory_Strategy::infix_to_postfix(const std::string &infix, Expr_
         // current input goes into token
         input >> token;
 
-        // use command factory to create a comand and set it to cmd
+        // use command factory to create a command and set it to cmd
         if (token == "+")
         {
             cmd = factory.create_add_command();
@@ -76,56 +76,12 @@ void Abstract_Factory_Strategy::infix_to_postfix(const std::string &infix, Expr_
         {
             cmd = factory.create_mod_command();
         }
-        else if (token == "(")
-        {
-        }
-        else if (token == ")")
-        {
-        }
-        // COMMENT Where is condition to handle parenthesis?!
-
-        // ANSWER: parenthesis were originally further down in unfinished infix to postfix algorithm
-
-        // if token is a parenthesis, get whatever is inside parentesis and set it to expr
-        // convert this expression to postfix and evaluate it
-        // take result of parenthesis and create a num_command to set to cmd
-        // else if (token == "(")
-        //{
-        //    // string expression of whatever is inside parenthesis
-        //    std::string expr = "";
-        //
-        //    // create temp int stack for result of parenthesis expression
-        //    Stack<int> tempResult;
-        //
-        //    // create temp Stack_Expr_Command_Factory
-        //    Stack_Expr_Command_Factory tempFactory(tempResult);
-        //
-        //    // create a temp array of commands
-        //    Array<Expr_Command *> tempPostfix;
-        //
-        //    while (!input.eof()) {
-        //        input >> token;
-        //        if (token == ")") {
-        //            infix_to_postfix(expr, tempFactory, tempPostfix);
-        //            evaluate_postfix(tempPostfix);
-        //            std::cout << tempResult.top() << std::endl;
-        //            cmd = factory.create_num_command(tempResult.top());
-        //        } else {
-        //            expr = expr + token + " ";
-        //        }
-        //    }
-        //}
         else
         {
             cmd = factory.create_num_command(stoi(token));
         }
 
         // handle the command based on infix-to-postfix algorithm
-
-        // COMMENT Please add the infix-to-postfix algorithm. It's a critical part for
-        // the calculator to actually work. :-)
-
-        // ANSWER: Finished infix_to_postfix algorithm!
 
         // if token is operand, append command to end of postfix expression
         if (isOperand(token))
@@ -171,6 +127,7 @@ void Abstract_Factory_Strategy::infix_to_postfix(const std::string &infix, Expr_
             }         // end else
         }             // end if isOperator
 
+        // if token is open parentheses, create substring until matching closed parentheses
         if (token == "(")
         {
             // string expression of whatever is inside parenthesis
