@@ -11,6 +11,7 @@
 
 #include "Expr_Builder.h"
 #include "Expr_Tree.h"
+#include "../utils/Stack.h"
 
 #include "./expression_nodes/Expr_Node.h"
 #include "./expression_nodes/Number_Node.h"
@@ -27,6 +28,7 @@ public:
     ~Expr_Tree_Builder(void);
 
     virtual void start_expression(void);
+    virtual void end_expression(void);
     virtual Expr_Tree* get_expression(void);
     
     virtual void build_number(int n);
@@ -37,13 +39,15 @@ public:
     virtual void build_div_operator(void);
     virtual void build_mod_operator(void);
 
-    friend class Calculator;
+    friend class Builder_Strategy;
 
 private:
     Expr_Tree* tree_;
-    Expr_Tree* temp_;
+    // Expr_Tree* temp_;
+    Stack<Expr_Node*> nodes_; // stack of fully build Expr_Nodes
+    Stack<Expr_Node*> tempOps_; // stack of temporary operator Expr_Nodes
 
-    virtual void build_binary_expression(Binary_Expr_Node& n);
+   void build_binary_expression(Expr_Node* n);
 };
 
 #endif

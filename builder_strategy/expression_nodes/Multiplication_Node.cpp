@@ -25,5 +25,5 @@ void Multiplication_Node::accept(Expr_Node_Visitor &v)
 
 int Multiplication_Node::get_precedence()
 {
-    return 1;
+    return 2;
 }

@@ -35,7 +35,7 @@ public:
 
     friend class Eval_Expr_Tree;
     friend class Expr_Node_Visitor;
-    friend class Calculator;
+    friend class Builder_Strategy;
 
 protected:
     Expr_Node* left_;

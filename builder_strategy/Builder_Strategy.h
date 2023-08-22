@@ -15,7 +15,8 @@
 #include <sstream>
 
 #include "../Calculator_Strategy.h"
-// #include "Expr_Tree_Builder.h"
+#include "Expr_Tree_Builder.h"
+#include "Eval_Expr_Tree.h"
 
 class Builder_Strategy : public Calculator_Strategy
 {
@@ -41,8 +42,11 @@ public:
      */
     int result();
 
-protected:
+private:
     int result_;
+
+    void parse_expr(const std::string &infix, Expr_Tree_Builder &b);
+    int evaluate(Expr_Tree_Builder &b);
 };
 
 #endif

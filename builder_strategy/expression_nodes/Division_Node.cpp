@@ -25,5 +25,5 @@ void Division_Node::accept(Expr_Node_Visitor &v)
 
 int Division_Node::get_precedence()
 {
-    return 1;
+    return 2;
 }
