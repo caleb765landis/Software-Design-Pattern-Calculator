@@ -76,12 +76,77 @@ void Abstract_Factory_Strategy::infix_to_postfix(const std::string &infix, Expr_
         {
             cmd = factory.create_mod_command();
         }
-        else
-        {
-            cmd = factory.create_num_command(stoi(token));
-        }
+        // if token is open parentheses, create substring until matching closed parentheses
+        else if (token == "(")
+            {
+                // string expression of whatever is inside parenthesis
+                std::string expr = "";
 
-        // handle the command based on infix-to-postfix algorithm
+                // create temp int stack for result of parenthesis expression
+                Stack<int> tempResult;
+
+                // create temp Stack_Expr_Command_Factory
+                Stack_Expr_Command_Factory tempFactory(tempResult);
+
+                // create a temp array of commands
+                Array<Expr_Command *> tempPostfix;
+
+                // number of sub-expressions within parentheses
+                // increases every time an open parentheses is found
+                // decreases every time an closed parentheses is found
+                // starts at 1 because current token is already a found open parentheses
+                int numSubExpr = 1;
+
+                bool keepIterating = true;
+                while (keepIterating)
+                {
+                    input >> token;
+
+                    if (token == "(")
+                    {
+                        numSubExpr++;
+                    }
+                    else if (token == ")")
+                    {
+                        numSubExpr--;
+
+                        if (numSubExpr == 0)
+                        {
+                            // trim last space off of expression so it doesn't mess up ss parsing
+                            // finalExpr is just the expression without the extra space at the end
+                            std::string finalExpr = "";
+                            for (int i = 0; i < expr.length() - 1; i++)
+                            {
+                                finalExpr = finalExpr + expr[i];
+                            }
+
+                            infix_to_postfix(finalExpr, tempFactory, tempPostfix);
+                            evaluate_postfix(tempPostfix);
+                            cmd = factory.create_num_command(tempResult.top());
+
+                            // append num command to postfix and end this loop
+                            postfix.resize(postfix.size() + 1);
+                            postfix[postfix.size() - 1] = cmd;
+
+                            keepIterating = false;
+                        }
+                    }
+                    else
+                    {
+                        expr = expr + token + " ";
+                    } // end if
+                }     // end while
+            }         // end if open parentheses
+            else if (token == ")")
+            {
+                // do nothing
+            }
+            else
+            {
+                cmd = factory.create_num_command(stoi(token));
+            }
+
+        // handle the new command based on infix-to-postfix algorithm
 
         // if token is operand, append command to end of postfix expression
         if (isOperand(token))
@@ -126,51 +191,6 @@ void Abstract_Factory_Strategy::infix_to_postfix(const std::string &infix, Expr_
                 }     // end while
             }         // end else
         }             // end if isOperator
-
-        // if token is open parentheses, create substring until matching closed parentheses
-        if (token == "(")
-        {
-            // string expression of whatever is inside parenthesis
-            std::string expr = "";
-
-            // create temp int stack for result of parenthesis expression
-            Stack<int> tempResult;
-
-            // create temp Stack_Expr_Command_Factory
-            Stack_Expr_Command_Factory tempFactory(tempResult);
-
-            // create a temp array of commands
-            Array<Expr_Command *> tempPostfix;
-
-            bool keepIterating = true;
-            while (keepIterating)
-            {
-                input >> token;
-                if (token == ")")
-                {
-                    // trim last space off of expression so it doesn't mess up ss parsing
-                    // finalExpr is just the expression without the extra space at the end
-                    std::string finalExpr = "";
-                    for (int i = 0; i < expr.length() - 1; i++)
-                    {
-                        finalExpr = finalExpr + expr[i];
-                    }
-
-                    infix_to_postfix(finalExpr, tempFactory, tempPostfix);
-                    evaluate_postfix(tempPostfix);
-                    cmd = factory.create_num_command(tempResult.top());
-
-                    // append num command to postfix and end this loop
-                    postfix.resize(postfix.size() + 1);
-                    postfix[postfix.size() - 1] = cmd;
-                    keepIterating = false;
-                }
-                else
-                {
-                    expr = expr + token + " ";
-                } // end if
-            }     // end while
-        }         // end if parentheses
 
         if (input.eof())
         {

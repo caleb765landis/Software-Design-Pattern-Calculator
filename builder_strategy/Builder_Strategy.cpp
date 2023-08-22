@@ -15,7 +15,7 @@ void Builder_Strategy::solve(std::string expression)
     parse_expr(expression, *b);
 
     // evaluate expression tree from builder with visitor
-    // evaluate(*b);
+    evaluate(*b);
 
     delete b;
 }
@@ -71,34 +71,60 @@ void Builder_Strategy::parse_expr(const std::string &infix, Expr_Tree_Builder &b
             // create expression tree builder and give it access to nums
             Expr_Tree_Builder *temp_b = new Expr_Tree_Builder();
 
+            // number of sub-expressions within parentheses
+            // increases every time an open parentheses is found
+            // decreases every time an closed parentheses is found
+            // starts at 1 because current token is already a found open parentheses
+            int numSubExpr = 1;
+
             bool keepIterating = true;
             while (keepIterating)
             {
                 input >> token;
-                if (token == ")")
+
+                if (token == "(")
                 {
-                    // trim last space off of expression so it doesn't mess up ss parsing
-                    // finalExpr is just the expression without the extra space at the end
-                    std::string finalExpr = "";
-                    for (int i = 0; i < expr.length() - 1; i++)
-                    {
-                        finalExpr = finalExpr + expr[i];
-                    }
-
-                    // parse through expression to put it in postfix order and build tree with postfix expression
-                    parse_expr(expr, *temp_b);
-
-                    // evaluate expression tree from builder with visitor
-                    evaluate(*temp_b);
+                    numSubExpr++;
                 }
+                else if (token == ")")
+                {
+                    numSubExpr--;
+
+                    if (numSubExpr == 0)
+                    {
+                        // trim last space off of expression so it doesn't mess up ss parsing
+                        // finalExpr is just the expression without the extra space at the end
+                        std::string finalExpr = "";
+                        for (int i = 0; i < expr.length() - 1; i++)
+                        {
+                            finalExpr = finalExpr + expr[i];
+                        }
+
+                        // parse through expression to put it in postfix order and build tree with postfix expression
+                        parse_expr(finalExpr, *temp_b);
+
+                        // evaluate expression tree from builder with visitor
+                        evaluate(*temp_b);
+
+                        // build a number node with result of all expressions within currently found parentheses
+                        b.build_number(this->result_);
+
+                        delete temp_b;
+
+                        keepIterating = false;
+                    } // end if
+                } // end if
                 else
                 {
                     expr = expr + token + " ";
                 } // end if
             }     // end while
-        }         // end if parentheses
-        else
+        }         // end if open parentheses
+        else if (token == ")")
         {
+            // do nothing
+        }
+        else {
             b.build_number(stoi(token));
         }
 
@@ -111,17 +137,9 @@ void Builder_Strategy::parse_expr(const std::string &infix, Expr_Tree_Builder &b
     b.end_expression();
 }
 
-int Builder_Strategy::evaluate(Expr_Tree_Builder &b)
+void Builder_Strategy::evaluate(Expr_Tree_Builder &b)
 {
     Eval_Expr_Tree eval;
     b.tree_->get_head().accept(eval);
-
-    // eval.Visit_Addition_Node(eval);
-    // eval.Visit_Number_Node(eval);
-    std::cout << b.tree_->get_head().value_ << std::endl;
-
-    int result = eval.result();
-    std::cout << result << std::endl;
-
-    // delete b.tree_;
+    this->result_ = eval.result();
 }

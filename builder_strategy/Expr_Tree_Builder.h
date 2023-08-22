@@ -29,7 +29,7 @@ public:
 
     virtual void start_expression(void);
     virtual void end_expression(void);
-    virtual Expr_Tree* get_expression(void);
+    virtual Expr_Tree* get_expression_tree(void);
     
     virtual void build_number(int n);
 
@@ -43,7 +43,6 @@ public:
 
 private:
     Expr_Tree* tree_;
-    // Expr_Tree* temp_;
     Stack<Expr_Node*> nodes_; // stack of fully build Expr_Nodes
     Stack<Expr_Node*> tempOps_; // stack of temporary operator Expr_Nodes
 

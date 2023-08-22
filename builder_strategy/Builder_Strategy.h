@@ -46,7 +46,7 @@ private:
     int result_;
 
     void parse_expr(const std::string &infix, Expr_Tree_Builder &b);
-    int evaluate(Expr_Tree_Builder &b);
+    void evaluate(Expr_Tree_Builder &b);
 };
 
 #endif
