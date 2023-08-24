@@ -45,8 +45,30 @@ public:
 private:
     int result_;
 
-    void parse_expr(const std::string &infix, Expr_Tree_Builder &b);
-    void evaluate(Expr_Tree_Builder &b);
+    /**
+     * @brief parses through expression and builds expression tree with builder
+     * 
+     * @param expression the string to parse through
+     * @param b the expression tree builder
+     */
+    void parse_expr(const std::string& expression, Expr_Tree_Builder& b);
+
+    /**
+     * @brief uses a concrete visitor instance to traverse through tree and calculate result
+     * 
+     * @param b the builder instance containing the built expression tree
+     */
+    void evaluate(Expr_Tree_Builder& b);
+
+    /**
+     * @brief checks if a token is a number
+     * 
+     * @param s the string to parse through
+     * 
+     * @return true if all of s is a number
+     * @return false if s is empty or part of it is not a number
+     */
+    bool is_number(const std::string &s);
 };
 
 #endif

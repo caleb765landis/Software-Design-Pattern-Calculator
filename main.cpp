@@ -18,8 +18,11 @@ int main(int argc, char *argv[])
 {
     std::string strategy = "";
 
+    // get commandline arguments to determine which strategy to use
     try
     {
+        // if only commandline argument is running main executable 
+        // or if arguments are more than the two expected, throw an error
         if (argc == 1 || argc > 2)
         {
             throw "ERROR: incorrect number of arguments";
@@ -27,14 +30,18 @@ int main(int argc, char *argv[])
 
         std::string temp = argv[1];
 
+        // if argument is for factory strategy, set that as the strategy to use
         if (temp == "-f")
         {
             strategy = "factory";
         }
+        // if argument is for builder strategy, set that as the strategy to use
         else if (temp == "-b")
         {
             strategy = "builder";
         }
+        // if argument is for driver, run all tests
+        // then have user choose which strategy to continue with
         else if (temp == "-d")
         {
             // Create driver instance
@@ -46,11 +53,13 @@ int main(int argc, char *argv[])
             // Choose strategy to continue testing calculator client
             strategy = chooseStrategy();
         }
+        // if argument doesn't match any expected conditions, throw an error
         else
         {
             throw "ERROR: unknown strategy";
         }
     }
+    // catch and report errors and have user choose which strategy to use
     catch (const char *exp)
     {
         std::cout << exp << std::endl << std::endl;
@@ -69,6 +78,12 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+/**
+ * @brief has user input which strategy they want to continue with
+ * 
+ * @return std::string the strategy chosen
+ *         will return either "factory" or "builder"
+ */
 std::string chooseStrategy()
 {
     bool keepGoing = true;

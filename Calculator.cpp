@@ -41,9 +41,20 @@ void Calculator::start()
         }
         else
         {
-            this->strategy_->solve(expression);
-            int result = this->strategy_->result();
-            std::cout << "Your result is: " << result << std::endl;
+            try
+            {
+                // try to solve the expression with the chosen strategy
+                this->strategy_->solve(expression);
+
+                // get result from strategy and output it
+                int result = this->strategy_->result();
+                std::cout << "Your result is: " << result << std::endl;
+            }
+            // catch and report errors and have user choose which strategy to use
+            catch (const char *exp)
+            {
+                std::cout << exp << std::endl << std::endl;
+            }
         } // end if
     } // end while
 } // end start

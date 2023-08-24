@@ -3,7 +3,7 @@
  * @file       Calculator_Strategy.h
  *
  * Abstract parent class for different strategies to parse and solve
- * simple mathematical expressions/
+ * simple mathematical expressions.
  */
 //==============================================================================
 
@@ -25,7 +25,7 @@ public:
     virtual void solve(std::string expression) = 0;
 
     /**
-     * @brief returns result_
+     * @brief returns result_'s value
      * 
      * @return int 
      */

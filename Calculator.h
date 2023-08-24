@@ -63,7 +63,7 @@ public:
     void setStrategy(std::string strategy);
 
 private:
-    Calculator_Strategy* strategy_;
+    Calculator_Strategy* strategy_; // the chosen concrete strategy instance
 };
 
 #endif

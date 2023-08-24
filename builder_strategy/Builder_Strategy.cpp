@@ -11,10 +11,10 @@ void Builder_Strategy::solve(std::string expression)
     // create expression tree builder
     Expr_Tree_Builder *b = new Expr_Tree_Builder();
 
-    // parse through expression to put it in postfix order and build tree with postfix expression
+    // parse through expression and build expression tree
     parse_expr(expression, *b);
 
-    // evaluate expression tree from builder with visitor
+    // evaluate expression tree created by builder with an expression tree visitor instance
     evaluate(*b);
 
     delete b;
@@ -25,14 +25,15 @@ int Builder_Strategy::result()
     return this->result_;
 }
 
-void Builder_Strategy::parse_expr(const std::string &infix, Expr_Tree_Builder &b)
+void Builder_Strategy::parse_expr(const std::string &expression, Expr_Tree_Builder &b)
 {
     // create an input stream parser
-    std::istringstream input(infix);
+    std::istringstream input(expression);
 
     // create a string called token for current token in string stream
     std::string token;
 
+    // start building expression
     b.start_expression();
 
     // while it is not the end of input stream parser
@@ -42,7 +43,7 @@ void Builder_Strategy::parse_expr(const std::string &infix, Expr_Tree_Builder &b
         // current input goes into token
         input >> token;
 
-        // use builder to create an expression node and set it to node
+        // use builder to create an expression node for corresponding token
         if (token == "+")
         {
             b.build_add_operator();
@@ -63,6 +64,9 @@ void Builder_Strategy::parse_expr(const std::string &infix, Expr_Tree_Builder &b
         {
             b.build_mod_operator();
         }
+        // creates a sub-expression string from expression between matching parentheses pair
+        // recursively solves sub-expressions until no more parentheses are found
+        // builds a new number node with result of outermost sub-expression
         else if (token == "(")
         {
             // string expression of whatever is inside parenthesis
@@ -124,22 +128,38 @@ void Builder_Strategy::parse_expr(const std::string &infix, Expr_Tree_Builder &b
         {
             // do nothing
         }
-        else {
+        else if (is_number(token))
+        {
             b.build_number(stoi(token));
         }
+        else 
+        {
+            throw "ERROR: invlaid expression";
+        }
 
+        // stop loop once end of input expression
         if (input.eof())
         {
             keepConverting = false;
         }
     } // end while
 
+    // stop building expression tree
     b.end_expression();
 }
 
 void Builder_Strategy::evaluate(Expr_Tree_Builder &b)
 {
+    // traverse through expression tree with visitor
     Eval_Expr_Tree eval;
     b.tree_->get_head().accept(eval);
+
+    // get result from visitor
     this->result_ = eval.result();
+}
+
+bool Builder_Strategy::is_number(const std::string &s)
+{
+    // return if s is empty or has something that is not a digit in it
+    return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
 }
