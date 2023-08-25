@@ -14,8 +14,16 @@
 class Subtraction_Node : public Binary_Expr_Node
 {
 public:
+    /**
+     * @brief Construct a new Addition_Node object.
+     *        Sets left and right children to nullptr.
+     */
     Subtraction_Node(void);
-    // Subtraction_Node(Expr_Node *l, Expr_Node *r);
+
+    /**
+     * @brief Destroy the Addition_Node object.
+     *        Deletes left and right children if they are not null.
+     */
     ~Subtraction_Node(void);
 
     virtual void accept(Expr_Node_Visitor &v);

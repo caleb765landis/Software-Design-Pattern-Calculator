@@ -14,8 +14,16 @@
 class Mod_Node : public Binary_Expr_Node
 {
 public:
+    /**
+     * @brief Construct a new Addition_Node object.
+     *        Sets left and right children to nullptr.
+     */
     Mod_Node(void);
-    // Mod_Node(Expr_Node *l, Expr_Node *r);
+
+    /**
+     * @brief Destroy the Addition_Node object.
+     *        Deletes left and right children if they are not null.
+     */
     ~Mod_Node(void);
 
     virtual void accept(Expr_Node_Visitor &v);

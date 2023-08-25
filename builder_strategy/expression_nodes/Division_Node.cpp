@@ -3,19 +3,22 @@
 #include "Division_Node.h"
 
 Division_Node::Division_Node(void)
-{}
-
-// Division_Node::Division_Node(Expr_Node *l, Expr_Node *r)
-// {
-//     this->left_ = l;
-//     this->right_ = r;
-//     this->value_ = 0;
-// }
+{
+    this->left_ = nullptr;
+    this->right_ = nullptr;
+}
 
 Division_Node::~Division_Node(void)
 {
-    // delete this->right_;
-    // delete this->left_;
+    if (this->left_ != nullptr)
+    {
+        delete this->left_;
+    }
+
+    if (this->right_ != nullptr)
+    {
+        delete this->right_;
+    }
 }
 
 void Division_Node::accept(Expr_Node_Visitor &v)

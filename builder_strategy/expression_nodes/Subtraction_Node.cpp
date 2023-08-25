@@ -3,19 +3,22 @@
 #include "Subtraction_Node.h"
 
 Subtraction_Node::Subtraction_Node(void)
-{}
-
-// Subtraction_Node::Subtraction_Node(Expr_Node *l, Expr_Node *r)
-// {
-//     this->left_ = l;
-//     this->right_ = r;
-//     this->value_ = 0;
-// }
+{
+    this->left_ = nullptr;
+    this->right_ = nullptr;
+}
 
 Subtraction_Node::~Subtraction_Node(void)
 {
-    // delete this->right_;
-    // delete this->left_;
+    if (this->left_ != nullptr)
+    {
+        delete this->left_;
+    }
+
+    if (this->right_ != nullptr)
+    {
+        delete this->right_;
+    }
 }
 
 void Subtraction_Node::accept(Expr_Node_Visitor &v)

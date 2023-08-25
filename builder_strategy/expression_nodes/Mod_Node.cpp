@@ -3,19 +3,22 @@
 #include "Mod_Node.h"
 
 Mod_Node::Mod_Node(void)
-{}
-
-// Mod_Node::Mod_Node(Expr_Node *l, Expr_Node *r)
-// {
-//     this->left_ = l;
-//     this->right_ = r;
-//     this->value_ = 0;
-// }
+{
+    this->left_ = nullptr;
+    this->right_ = nullptr;
+}
 
 Mod_Node::~Mod_Node(void)
 {
-    // delete this->right_;
-    // delete this->left_;
+    if (this->left_ != nullptr)
+    {
+        delete this->left_;
+    }
+
+    if (this->right_ != nullptr)
+    {
+        delete this->right_;
+    }
 }
 
 void Mod_Node::accept(Expr_Node_Visitor &v)

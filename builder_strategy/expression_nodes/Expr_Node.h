@@ -17,7 +17,6 @@ class Expr_Node_Visitor;
 class Expr_Node
 {
 public:
-
     // Methods for children to inherit for setting and getting left/right nodes
     void set_left(Expr_Node& n);
     Expr_Node& get_left();

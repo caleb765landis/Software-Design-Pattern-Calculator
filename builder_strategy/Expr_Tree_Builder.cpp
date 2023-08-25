@@ -15,6 +15,12 @@ Expr_Tree_Builder::~Expr_Tree_Builder(void)
 
 void Expr_Tree_Builder::start_expression()
 {
+    // reset expression tree if one already exists
+    if (this->tree_ != nullptr)
+    {
+        delete this->tree_;
+    }
+
     this->tree_ = new Expr_Tree();
 }
 

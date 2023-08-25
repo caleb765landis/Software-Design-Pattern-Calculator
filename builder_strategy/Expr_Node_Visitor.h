@@ -1,7 +1,8 @@
 //==============================================================================
 /**
  * @file    Expr_Node_Visitor.h
- *
+ * 
+ * Visits every node that accepts the visitor, then applies the node's corresponding operation.
  */
 //==============================================================================
 
