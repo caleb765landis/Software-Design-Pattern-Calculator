@@ -14,6 +14,12 @@
 
 all: calculator
 
+valgrind-b: calculator
+	valgrind --leak-check=full ./calculator -b
+
+valgrind-f: calculator
+	valgrind --leak-check=full ./calculator -f
+
 depend: calculator-depend
 
 clean generated realclean check-syntax $(CUSTOM_TARGETS):
