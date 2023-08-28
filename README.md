@@ -36,3 +36,26 @@ Expressions must be composed of positive integers, and their solution must equal
 - ( 3 + 5 ) / ( 1 * ( 7 - 3 ) )
 - 9 - 5 + 2 + 6 - 4 * 2
 - 7 * ( 5 - 3 ) - 4 + 6 / 3
+
+## Class Design and Patterns Used
+![Calculator](./class_diagrams/Calculator.png)
+
+This program demonstrates eight essential software design patterns. These patterns are discussed below, alongside some specific classes from the program.
+
+### Calculator and the Strategy Pattern
+The calculator class will have an instance of a concrete child of Calculator_Strategy. The chosen strategy will solve an expression given to it by the calculator class using its corresponding algorithm. The two strategies used are Abstract_Factory_Strategy and Builder_Strategy, both of which implement concrete versions of the solve() and result() abstract methods from Calculator_Strategy. The strategy pattern is useful here becuase different algorithms can be decided on and used at runtime, but the solve() and result() methods will appear to work the exact same to the calculator class.
+
+### Abstract Factory and Command Patterns
+![Abstract Factory Pattern](./class_diagrams/Abstract_Factory_Pattern.png)
+
+The abstract factory and command patterns are used by the Abstract_Factory_Strategy class. This strategy's algorithm parses through the expression, converting the expression from infix notation to postfix notation. As the algorithm does this, it is creating a command for each term using the Stack_Expr_Command_Factory class and storing it in a resizable array. The order in which the commands appear in the array correspond to where they appear in the postfix expression. Once the expression has been parsed and all commands have been created in postfix order, the strategy can loop through each command in the array to execute the command, solving the equation. The abstract factory pattern was useful for encapsulating how to build the array of commands in postfix order. The command pattern helped evaluate the expression based on the postfix order.
+
+### Builder, Composite, Template, and Visitor Patterns
+![Builder Strategy](./class_diagrams/Builder_Strategy.png)
+
+The Builder_Strategy class has a lot more moving parts in it, but it is equally as interesting as Abstract_Factory_Strategy. The builder strategy's algorithm makes use of the Expr_Tree_Builder class which builds a tree of composite nodes as the strategy parses the given expression. Each composite node corresponds to either an operand or operator. The tree's structure has operands as the leaves and operators as internal nodes. Since all of the operators available have binary operations (meaning the operator will have a term to its left and its right), a template method is used in the builder called build_binary_method(). The Eval_Expr_Tree class is used as a visitor object to traverse this tree and calculate the result of the expression. The visitor is able perform the correct operations because each composite node can accept the visitor, telling it which operation to perform.
+
+The builder pattern helped encapsulate building the expression tree in this strategy. The template pattern was used by the builder to perform the same building algorithm for different binary expression nodes. Using the visitor pattern made it so that the expression tree could be traversed while calculating the result of the expression at the same time. The composite pattern aided the visitor by adding functionality to each node so that the visitor knew which operation to perform on what nodes.
+
+### Facade (Wrapper) Pattern
+Not shown in the class diagrams above is the facade pattern, also known as the wrapper pattern. This pattern is used by the driver classes, which are classes used for testing classes in the program. The facade pattern in this program provides a single interface for a client to run specific or all tests in the driver. The driver's methods simply call methods from other driver classes; these classes assigned to different modules in the system. Currently the driver only calls methods from the Utils_Driver, but more drivers can be created for testing other parts of the program.
