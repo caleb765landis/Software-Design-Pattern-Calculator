@@ -46,7 +46,7 @@ This program demonstrates eight essential software design patterns. These patter
 The calculator class will have an instance of a concrete child of Calculator_Strategy. The chosen strategy will solve an expression given to it by the calculator class using its corresponding algorithm. The two strategies used are Abstract_Factory_Strategy and Builder_Strategy, both of which implement concrete versions of the solve() and result() abstract methods from Calculator_Strategy. The strategy pattern is useful here becuase different algorithms can be decided on and used at runtime, but the solve() and result() methods will appear to work the exact same to the calculator class.
 
 ### Abstract Factory and Command Patterns
-![Abstract Factory Pattern](./class_diagrams/Abstract_Factory_Pattern.png)
+![Abstract Factory Strategy](./class_diagrams/Abstract_Factory_Strategy.png)
 
 The abstract factory and command patterns are used by the Abstract_Factory_Strategy class. This strategy's algorithm parses through the expression, converting the expression from infix notation to postfix notation. As the algorithm does this, it is creating a command for each term using the Stack_Expr_Command_Factory class and storing it in a resizable array. The order in which the commands appear in the array correspond to where they appear in the postfix expression. Once the expression has been parsed and all commands have been created in postfix order, the strategy can loop through each command in the array to execute the command, solving the equation. The abstract factory pattern was useful for encapsulating how to build the array of commands in postfix order. The command pattern helped evaluate the expression based on the postfix order.
 
