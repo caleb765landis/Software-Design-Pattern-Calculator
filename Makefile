@@ -14,11 +14,17 @@
 
 all: calculator
 
-valgrind-b: calculator
-	valgrind --leak-check=full ./calculator -b
+run: calculator
+	./calculator
 
-valgrind-f: calculator
-	valgrind --leak-check=full ./calculator -f
+factory: calculator
+	./calculator -f
+
+builder: calculator
+	./calculator -b
+
+driver: calculator
+	./calculator -d
 
 depend: calculator-depend
 
@@ -35,3 +41,9 @@ calculator-depend:
 
 project_name_list:
 	@echo calculator
+
+valgrind-b: calculator
+	valgrind --leak-check=full ./calculator -b
+
+valgrind-f: calculator
+	valgrind --leak-check=full ./calculator -f

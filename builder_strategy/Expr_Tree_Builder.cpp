@@ -4,9 +4,7 @@
 
 Expr_Tree_Builder::Expr_Tree_Builder(void)
     : tree_(nullptr)
-    //   temp_(nullptr)
-{
-}
+{}
 
 Expr_Tree_Builder::~Expr_Tree_Builder(void)
 {
